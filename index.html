@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cryos Website</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&amp;display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="https://mczak.com/code/sudoku/js/sudoku2.js"></script>
+
+</head>
+<body>
+
+  <!-- Main Window -->
+  <div id="mainWindow" class="window" style="width:760px; height:450px;">
+    <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+      <span>Welcome</span>
+    </div>
+    <div class="window-content">
+      <div class="content-area">
+        <p>Welcome to my website!</p>
+        <p>Feel free to explore sections below.</p>
+    
+      </div>
+      <div class="center-buttons">
+        <button class="icon-button" onclick="openWindow('aboutWindow')">about</button>
+        <button class="icon-button" onclick="openWindow('contactWindow')">contact</button>
+        <button class="icon-button" onclick="openWindow('recomendationsWindow')">recomendations</button>
+        <button class="icon-button" onclick="openWindow('games')">games</button>
+        <button class="icon-button" onclick="openWindow('randomThings')">Random Things</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Window -->
+  <div id="aboutWindow" class="window hidden" onmousedown="bringToFront(this)">
+    <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+      <span>about</span>
+      <button onclick="closeWindow('aboutWindow')">[x]</button>
+    </div>
+    <div class="window-content">
+      <p>Hi :)</p>
+      <p>I am Cryotic (Paul), a computer science student who's also interested in a lot of things.</p>
+      <p>Maybe you can find something that interests you as well on my website.</p>
+    </div>
+  </div>
+
+  <!-- Contact Window -->
+  <div id="contactWindow" class="window hidden" onmousedown="bringToFront(this)">
+    <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+      <span>contact</span>
+      <button onclick="closeWindow('contactWindow')">[x]</button>
+    </div>
+    <div class="window-content">
+      <p>I don't really use much social media so email it is: CryoticLul@protonmail.com</p>
+    </div>
+  </div>
+
+  <!-- Recomendations Window -->
+  <div id="recomendationsWindow" class="window hidden" onmousedown="bringToFront(this)">
+    <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+      <span>recomendations</span>
+      <button onclick="closeWindow('recomendationsWindow')">[x]</button>
+    </div>
+    <div class="window-content">
+      <H1>Recomendations</H1>
+      <p>Bellow are some recomendartions of things i enjoeyed, i limited myself to 3 per category so it isnt too overwhelming.</p>
+      <p>I include a small synopsis or why i like it so much.</p>
+      
+      <h2 class="toggle-heading" onclick="toggleList('booksList', this)" style="cursor:pointer;">
+        <span class="arrow">&#9654;</span> Books:
+      </h2>
+      <dl id="booksList" style="display:none;">
+        <dt>"The Way of Kings" by Brandon Sanderson</dt>
+        <dd>An amazying Fantasy book, the worldbuilding is just unreal, it can be a bit confusing in the begining but you will understand more and more with each chapter. The characters and overall story is just amazing aswell, I can't praise this book enough.</dd>
+        <dt>"Animal Farm" by George Orwell</dt>
+        <dd>TODO</dd>
+        <dt>"Sherlock Holmes" by Sir Arthur Conan Doyle</dt>
+        <dd>TODO</dd>
+      </dl>
+      <h2 class="toggle-heading" onclick="toggleList('gamesList', this)" style="cursor:pointer;">
+        <span class="arrow">&#9654;</span> Games:
+      </h2>
+      <dl id="gamesList" style="display:none;">
+        <dt>"Hollow Knight" by Team Cherry</dt>
+        <dd>TODO</dd>
+        <dt>"Persona 5 Royal" by ATLUS</dt>
+        <dd>TODO</dd>
+        <dt>"Monster Hunter Rise (Sunbreak)" by Capcom</dt>
+        <dd>TODO</dd>
+      </dl>
+
+      <h2 class="toggle-heading" onclick="toggleList('mangaList', this)" style="cursor:pointer;">
+        <span class="arrow">&#9654;</span> Manga:
+      </h2>
+      <dl id="mangaList" style="display:none;">
+        <dt>"Frieren: Beyond Journey's End" by Kanehito Yamada</dt>
+        <dd>TODO</dd>
+        <dt>"Chaisaw Man" by Tatsuki Fujimoto</dt>
+        <dd>TODO</dd>
+        <dt>"20th Century Boys" by Naoki Urasawa</dt>
+        <dd>TODO</dd>
+      </dl>
+
+      <h2 class="toggle-heading" onclick="toggleList('animeList', this)" style="cursor:pointer;">
+        <span class="arrow">&#9654;</span> Anime:
+      </h2>
+      <dl id="animeList" style="display:none;">
+        <dt>"Apothecary Diaries"</dt>
+        <dd>TODO</dd>
+        <dt>"Hunter x Hunter"</dt>
+        <dd>TODO</dd>
+        <dt>"Cyberpunk: Edgerunners"</dt>
+        <dd>TODO</dd>
+      </dl>
+
+      <h2 class="toggle-heading" onclick="toggleList('movieList', this)" style="cursor:pointer;">
+        <span class="arrow">&#9654;</span> Movies:
+      </h2>
+      <dl id="movieList" style="display:none;">
+        <dt>"Princess Mononoke"</dt>
+        <dd>TODO</dd>
+        <dt>"John Wick"</dt>
+        <dd>TODO</dd>
+        <dt>"The Wonderful Story of Henry Sugar"</dt>
+        <dd>TODO</dd>
+      </dl>
+
+      <h2 class="toggle-heading" onclick="toggleList('seriesList', this)" style="cursor:pointer;">
+        <span class="arrow">&#9654;</span> Series:
+      </h2>
+      <dl id="seriesList" style="display:none;">
+        <dt>"Andor"</dt>
+        <dd>TODO</dd>
+        <dt>"Brooklyn Nine-Nine"</dt>
+        <dd>TODO</dd>
+        <dt>"Avatar: The last Airbender"</dt>
+        <dd>TODO</dd>
+      </dl>
+
+      <h2 class="toggle-heading" onclick="toggleList('musicList', this)" style="cursor:pointer;">
+        <span class="arrow">&#9654;</span> Music:
+      </h2>
+      <dl id="musicList" style="display:none;">
+        <dt>"Ado"</dt>
+        <dd>TODO</dd>
+        <dt>"Poor Mans Poison"</dt>
+        <dd>TODO</dd>
+        <dt>"Azari"</dt>
+        <dd>TODO</dd>
+      </dl>
+
+    
+    </div>
+  </div>
+
+  <!-- Games Window -->
+  <div id="games" class="window hidden" onmousedown="bringToFront(this)">
+    <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+      <span>games</span>
+      <button onclick="closeWindow('games')">[x]</button>
+    </div>
+    <div class="window-content">
+      <button class="icon-button" onclick="openWindow('blackjackWindow')">Blackjack</button>
+      <button class="icon-button" onclick="openWindow('sudokuWindow')">Sudoku</button>
+    </div>
+  </div>
+
+  <!-- Sudoku window -->
+<div id="sudokuWindow" class="window hidden" onmousedown="bringToFront(this)">
+  <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+    <span>Sudoku</span>
+    <button onclick="closeWindow('sudokuWindow')">[x]</button>
+  </div>
+  <div class="window-content" style="overflow:auto;">
+    <div class="wrap">
+      <label for="toggleCandidates">Show candidates </label>
+      <input id="toggleCandidates" class="js-candidate-toggle" type="checkbox"/>
+      New:
+      <button type="button" class="sudokubutton1 js-generate-board-btn--easy">Easy</button>
+      <button type="button" class="sudokubutton2 js-generate-board-btn--medium">Medium</button>
+      <button type="button" class="sudokubutton3 js-generate-board-btn--hard">Hard</button>
+      <button type="button" class="sudokubutton4 js-generate-board-btn--very-hard">Very Hard</button>
+      <div id="sudoku" class="sudoku-board"></div>
+      Solve: <button type="button" class="sudokubutton5 js-solve-step-btn">One Step</button>
+      <button type="button" class="sudokubutton6 js-solve-all-btn">All</button>
+      <br>
+      Clear: <button type="button" class="sudokubutton7 js-clear-board-btn">Board</button>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  <!-- Blackjack Window -->
+  <div id="blackjackWindow" class="window hidden" onmousedown="bringToFront(this)">
+    <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+      <span>Blackjack</span>
+      <button onclick="closeWindow('blackjackWindow')">[x]</button>
+    </div>
+    <button class="rules-btn" onclick="openWindow('blackjackRules')">Rules</button>
+    <div class="window-content">
+      <div id="gameStatus">Press "Deal" to start.</div>
+      <div style="margin: 10px 0;">
+        <button onclick="deal()">Deal</button>
+        <button onclick="hit()">Hit</button>
+        <button onclick="stand()">Stand</button>
+      </div>
+      <div>
+        <p><strong>Your Hand:</strong> <span id="playerHand"></span></p>
+        <p><strong>Dealer Hand:</strong> <span id="dealerHand"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BJ Rules-->
+  <div id="blackjackRules" class="window hidden" onmousedown="bringToFront(this)">
+    <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+      <span>Blackjack Rules</span>
+      <button onclick="closeWindow('blackjackRules')">[x]</button>
+    </div>
+    <div class="window-content" style="overflow:auto;">
+      <p>Blackjack is a simple card game where the goal is to have a hand value as close to 21 as possible without going over.</p>
+      <p>Face cards (J, Q, K) are worth 10, and Aces can be worth 1 or 11.</p>
+      <p>When pressing "Start" you get dealt 2 cards and the Dealer 1, hiting 21 points is called "Blackjack" and you win imeadeatly</p>
+      <p>After getting your first cards, you can "Hit" to draw another or "Stand" to keep you hand and let the Dealer draw</p>
+      <p>The dealer must draw until they reach at least 17. If the Dealer is closer to 21 he wins.</p>
+    </div>
+  </div>
+
+  <!-- Random Things -->
+  <div id="randomThings" class="window hidden" onmousedown="bringToFront(this)">
+    <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+      <span>Random Things</span>
+      <button onclick="closeWindow('randomThings')">[x]</button>
+    </div>
+    <div class="window-content">    
+      <p>Just some Random things idk</p>
+
+    <h2 class="toggle-heading" onclick="toggleList('toolsList', this)" style="cursor:pointer;">
+      <span class="arrow">&#9654;</span> Web tools, Programs and Services:
+    </h2>
+      <ul id="toolsList" style="display:none;">
+        <li><a href="https://seostudio.tools/" target="_blank">SEOStudio Tools</a> a lot of helpfull tools for texts, youtube videos and web development</li>
+        <li><a href="https://www.ifixit.com/" target="_blank">IFixIt</a> loads of guides to repair things yourself</li>
+        <li><a href="https://www.researchgate.net/" target="_blank">Researchgate</a> Free scientific research</li>
+        <li><a href="https://roadmap.sh/" target="_blank">Roadmap</a> A lot of Roadmaps and guides for different programming languages and frameworks</li>
+      </ul>
+
+    <h2 class="toggle-heading" onclick="toggleList('WebsitesList', this)" style="cursor:pointer;">
+      <span class="arrow">&#9654;</span> Cool Websites:
+    </h2>
+      <ul id="WebsitesList" style="display:none;">
+        <li><a href="https://www.brandonsanderson.com/pages/writing-advice" target="_blank">Writing Advice</a> Writing Advice by Brandon Sanderson, complete recordings of his writing lectures</li>
+        <li><a href="https://asciimoon.com/" target="_blank">Moon Phases</a> Shows the moon phases in ascii art</li>
+        <li><a href="https://velvetblue.neocities.org/index2" target="_blank">Velvet Blue</a> Really cool Persona 3 themed Website</li>
+        <li><a href="https://astrax.neocities.org/" target="_blank">Astrax</a> Nice website to play some (classic) mobile games like angry birds and doodle jump</li>
+        <li><a href="https://readingproject.au/" target="_blank">Reading Project</a> An independently run website providing book reviews</li>
+        <li><a href="https://www.socialism101.com/home" target="_blank">Socialism 101</a> A website that explains socialism in a simple way</li>
+      </ul>
+
+    <h2 class="toggle-heading" onclick="toggleList('VideosList', this)" style="cursor:pointer;">
+      <span class="arrow">&#9654;</span> Videos:
+    </h2>
+      <ul id="VideosList" style="display:none;">
+        <li><a href="https://youtu.be/fAQmCNWJHb8?si=2S8RaX4gsGUyqPwc" target="_blank">Very Helpfull Guide</a></li>
+      </ul>
+      
+    <h2 class="toggle-heading" onclick="toggleList('ArtistsList', this)" style="cursor:pointer;">
+      <span class="arrow">&#9654;</span> Artists:
+    </h2>
+      <ul id="ArtistsList" style="display:none;">
+        <li><a href="https://www.artstation.com/rinotuna" target="_blank">Rinotuna</a> Takes things/animals designes characters inspired by them (some of my favorites are the ones ispired by toothpaste, the andromeda galaxy and border collies) </li>
+        <li><a href="https://www.instagram.com/raja.nandepu/" target="_blank">Raja Nandepu</a> Concept Artist and illustrator for wizards of the coast. Really like their Art.</li>
+      </ul>
+
+
+
+    
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- Success Window -->
+  <div id="successWindow" class="window hidden" onmousedown="bringToFront(this)">
+    <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+      <span>Success</span>
+      <button onclick="closeWindow('successWindow')">[x]</button>
+    </div>
+    <div class="window-content">
+      <p>Action completed successfully!</p>
+    </div>
+  </div>
+
+  <!-- Error Window -->
+  <div id="errorWindow" class="window hidden" onmousedown="bringToFront(this)">
+    <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
+      <span>Error</span>
+      <button onclick="closeWindow('errorWindow')">[x]</button>
+    </div>
+    <div class="window-content">
+      <p>An error occurred. Please try again later.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.onload = function() {
+      openWindow('mainWindow');
+    }
+  </script>
+</body>
+</html>

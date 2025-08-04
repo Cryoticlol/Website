@@ -1,0 +1,390 @@
+:root {
+  --primary: #991fef;
+  --secondary: #00c2a8;
+  --bg: #1e1e2f;
+  --text: white;
+  --accent: #b8f1f1;
+  --border: #444;
+  --sucess: #80ed99;
+  --error: #ff6b6b;
+}
+
+
+/* Grundlegendes Body-Styling */
+body {
+  margin: 0;
+  background-color: var(--bg); /* dunkles Grau */
+  font-family: 'Roboto Condensed', sans-serif;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Für später verwendbare Desktop-Fläche */
+.desktop {
+  padding: 20px;
+}
+
+/* Buttons wie Desktop-Icons */
+.icon-button {
+  background-color: var(--secondary);
+  color: white;
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.icon-button:hover {
+  background-color: var(--accent);
+}
+
+/* Fenster-Grundlayout */
+.window {
+  position: absolute;
+  top: 120px;
+  left: 120px;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+  z-index: 10;
+  min-width: 300px;
+  min-height: 200px;
+  width: 480px;
+  height: 320px;
+  resize: both;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+}
+
+/* Unsichtbar geschaltetes Fenster */
+.window.hidden {
+  display: none;
+}
+
+/* Header/Titlebar des Fensters */
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary); 
+  padding: 8px 12px;
+  font-weight: bold;
+  cursor: move;
+  user-select: none;
+  color: white;
+}
+
+/* Fensterinhalt */
+.window-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  overflow: auto;   
+  margin: 21px;
+}
+
+/* Der Scrollbare Bereich innerhalb des Fensters */
+.content-area {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+
+/* Button-Zeile unten im Fenster */
+.center-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 16px;
+  margin-top: 12px;
+  overflow-x: auto;      
+  overflow-y: hidden;
+  white-space: nowrap;  
+  padding-bottom: 4px;   
+}
+
+/* Schließen-Button (Fenster X) */
+.window-header button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.window-header button:hover {
+  color: black;
+}
+
+#blackjackWindow {
+  position: absolute;
+  min-width: 460px;
+  min-height: 230px;
+  overflow:auto;
+}
+
+#blackjackWindow .rules-btn {
+  position: absolute;
+  top: 45px;      
+  right: 12px;   
+  z-index: 2;
+  background: var(--secondary);
+  color: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#blackjackWindow .rules-btn:hover {
+  background: var(--accent);
+  color: black;
+}
+
+/* Blackjack-Buttonzeile wie .icon-button gestalten */
+#blackjackWindow .window-content > div:nth-child(2) button {
+  background-color: var(--secondary);
+  color: white;
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  min-width: 90px;
+}
+
+#blackjackWindow .window-content > div:nth-child(2) button:hover {
+  background-color: var(--accent);
+  color: black;
+}
+
+#blackjackWindow .window-content > div:nth-child(2) button:disabled {
+  background-color: var(--error);
+  color: black;
+  border-color: var(--error);
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+.window-content p {
+  margin: 2px 0;
+}
+
+.window-content h2 + ul,
+.window-content h2 + dl {
+  margin-top: 2px;
+  margin-bottom: 12px;
+}
+
+dl {
+  margin: 0 0 12px 0;
+}
+
+.toggle-heading {
+  color: var(--secondary);
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.toggle-heading.active {
+  color: var(--primary);
+}
+
+.toggle-heading .arrow {
+  display: inline-block;
+  width: 18px;
+  transition: transform 0.2s;
+  font-size: 1.1em;
+}
+
+.window-content a,
+.window-content a:visited {
+  color: var(--secondary); 
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.window-content a:hover {
+  color: var(--accent); 
+}
+
+
+/* --- Sudoku Styles --- */
+
+#sudokuWindow {
+  width: 850px;
+  height: 750px;
+  min-width: 600px;
+  min-height: 420px;
+}
+
+.sudoku-board {
+  min-height: 22.75rem;
+  margin-top: 3px;
+  margin-bottom: 1em;
+}
+
+.sudoku-board-cell {
+  display: inline-block;
+  position: relative;
+  border: 1px solid #888; 
+  background: var(--bg);
+  max-width: 11.11111%;
+}
+
+[data-board-size="9"].sudoku-board .sudoku-board-cell:nth-of-type(9n+1) {
+  border-left-width: 2px;
+  border-left-color: white;
+}
+
+[data-board-size="9"].sudoku-board .sudoku-board-cell:nth-of-type(n):nth-of-type(-n+9) {
+  border-top-width: 2px;
+  border-top-color: white;
+}
+
+[data-board-size="9"].sudoku-board .sudoku-board-cell:nth-of-type(3n) {
+  border-right-width: 2px;
+  border-right-color: white;
+}
+
+[data-board-size="9"].sudoku-board .sudoku-board-cell:nth-of-type(n+19):nth-of-type(-n+27),
+[data-board-size="9"].sudoku-board .sudoku-board-cell:nth-of-type(n+46):nth-of-type(-n+54),
+[data-board-size="9"].sudoku-board .sudoku-board-cell:nth-of-type(n+73):nth-of-type(-n+81) {
+  border-bottom-width: 2px;
+  border-bottom-color: white;
+}
+
+.sudoku-board-cell input {
+  background: none;
+  font-size: 19.2px;
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+  width: 2em;
+  max-width: 100%;
+  height: 2em;
+  border: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.sudoku-board-cell .highlight-val {
+  color: var(--secondary);
+}
+
+.sudoku-board-cell .board-cell--error {
+  background: #d00;
+  color: #eee;
+}
+
+.sudoku-board-cell .candidates {
+  display: none;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  text-align: center;
+  font-size: .75em;
+  letter-spacing: -.5px;
+  font-family: monospace, sans-serif;
+  line-height: 0;
+  text-align: justify;
+}
+
+.sudoku-board .candidates:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+}
+
+@media(max-width: 23em){
+  .sudoku-board .candidates {
+    letter-spacing: -2px;
+  }
+}
+.showCandidates .candidates {
+  display: block;
+}
+
+.sudoku-board .candidates div {
+  display: inline-block;
+  width: 20%;
+  line-height: 1.13;
+  vertical-align: top;
+}
+
+.candidate--highlight {
+  background-color: yellow;
+}
+.candidate--to-remove {
+  background-color: red;
+  color: white;
+}
+
+.sudokubutton1,.sudokubutton2,.sudokubutton3,.sudokubutton4,
+.sudokubutton5,.sudokubutton6,.sudokubutton7 {
+  color: white;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding: 1px 6px;
+}
+.sudokubutton1 {
+  background-color: #3cbf71;
+}
+.sudokubutton2 {
+  background-color: #ff9224;
+}
+.sudokubutton3 {
+  background-color: #ff3c3c;
+}
+.sudokubutton4 {
+  background-color: #020202;
+}
+.sudokubutton5,.sudokubutton6 {
+  background-color: #4040ff;
+}
+.sudokubutton7 {
+  background-color: #899db6;
+}
+.sudokubutton1:hover,.sudokubutton2:hover,.sudokubutton3:hover,.sudokubutton4:hover,
+.sudokubutton5:hover,.sudokubutton6:hover,.sudokubutton7:hover {
+  background-color: #EDEDED;
+  color: black;
+  cursor: pointer;
+}
+
+.wrap {
+  padding: 2em 1em;
+  width: 400px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media(min-width: 30em) {
+  .wrap {
+    width: 490px;
+  }
+  .sudoku-board input {
+    font-size: 24px;
+    font-size: 1.5rem;
+  }
+  .sudoku-board .candidates {
+    font-size: .8em;
+  }
+}
+
+
+
+
