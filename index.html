@@ -58,37 +58,37 @@
   </div>
 
   <!-- Recomendations Window -->
-  <div id="recomendationsWindow" class="window hidden" onmousedown="bringToFront(this)">
+  <div id="recommendationsWindow" class="window hidden" onmousedown="bringToFront(this)">
     <div class="window-header" onmousedown="startDrag(event, this.parentElement)">
-      <span>recomendations</span>
-      <button onclick="closeWindow('recomendationsWindow')">[x]</button>
+      <span>Recommendations</span>
+      <button onclick="closeWindow('recommendationsWindow')">[x]</button>
     </div>
     <div class="window-content">
-      <H1>Recomendations</H1>
-      <p>Bellow are some recomendartions of things i enjoeyed, i limited myself to 3 per category so it isnt too overwhelming.</p>
-      <p>I include a small synopsis or why i like it so much.</p>
-      
+      <h1>Recommendations</h1>
+      <p>Below are some recommendations of things I enjoyed. I limited myself to 3 per category so it isn't too overwhelming.</p>
+      <p>I include a small synopsis or why I like it so much or whatever I thought at the moment of writing :)</p>
+
       <h2 class="toggle-heading" onclick="toggleList('booksList', this)" style="cursor:pointer;">
         <span class="arrow">&#9654;</span> Books:
       </h2>
       <dl id="booksList" style="display:none;">
         <dt>"The Way of Kings" by Brandon Sanderson</dt>
-        <dd>An amazying Fantasy book, the worldbuilding is just unreal, it can be a bit confusing in the begining but you will understand more and more with each chapter. The characters and overall story is just amazing aswell, I can't praise this book enough.</dd>
+        <dd>An amazing fantasy book, the worldbuilding is just unreal. It can be a bit confusing in the beginning, but you will understand more and more with each chapter. The characters and overall story are just amazing as well, I can't praise this book enough.</dd>
         <dt>"Animal Farm" by George Orwell</dt>
-        <dd>TODO</dd>
+        <dd>A brilliant short novella that uses farm animals to portray and criticize totalitarianism, capitalism, and political corruption.</dd>
         <dt>"Sherlock Holmes" by Sir Arthur Conan Doyle</dt>
-        <dd>TODO</dd>
+        <dd>Everyone knows Sherlock Holmes, or has at least heard of him. And the detective stories are as good as people say they are, both Sherlock and Watson are amazing characters. Definitely a must-read. I love all of the stories, but if you have only time for a few I would recommend "A Study in Scarlet" and "The Red-Headed League".</dd>
       </dl>
       <h2 class="toggle-heading" onclick="toggleList('gamesList', this)" style="cursor:pointer;">
         <span class="arrow">&#9654;</span> Games:
       </h2>
       <dl id="gamesList" style="display:none;">
         <dt>"Hollow Knight" by Team Cherry</dt>
-        <dd>TODO</dd>
+        <dd>My favorite game. It's beautiful, challenging, and the world feels alive and interconnected. Combat is simple yet fluid and the boss designs are fantastic. The music is just so good. Play it, it's the best metroidvania I have ever played, it's very cheap and constantly on sale.</dd>
         <dt>"Persona 5 Royal" by ATLUS</dt>
-        <dd>TODO</dd>
+        <dd>Probably the best UI design and music in gaming. Lovable characters and an engaging story. Basically everything you would want in a turn-based JRPG. (Honorable mention: Persona 3 Reloaded and Metaphor: ReFantazio)</dd>
         <dt>"Monster Hunter Rise (Sunbreak)" by Capcom</dt>
-        <dd>TODO</dd>
+        <dd>An action-packed game that offers thrilling monster-hunting experiences and deep gameplay mechanics.</dd>
       </dl>
 
       <h2 class="toggle-heading" onclick="toggleList('mangaList', this)" style="cursor:pointer;">
@@ -96,11 +96,11 @@
       </h2>
       <dl id="mangaList" style="display:none;">
         <dt>"Frieren: Beyond Journey's End" by Kanehito Yamada</dt>
-        <dd>TODO</dd>
-        <dt>"Chaisaw Man" by Tatsuki Fujimoto</dt>
-        <dd>TODO</dd>
+        <dd>My favorite manga (and anime). A beautiful story which explores themes of friendship, loss, and the passage of time. The art is beautiful, the characters are amazingly written and lifelike, and the story is amazing (which might be a bit slow for some, but it serves the theme of the passage of time). Even the side characters are very memorable and I can see all of them being someone's favorite character. All in all, a masterpiece and the perfect manga for me.</dd>
+        <dt>"Chainsaw Man" by Tatsuki Fujimoto</dt>
+        <dd>I honestly don't know. Tatsuki Fujimoto is just kind of insane. It starts off pretty typical for a shonen manga but quickly becomes something much darker and weirder. The characters are all incredibly unique and the story is full of twists and turns that you just don't see coming. It has some of the coolest abilities and devil designs I have ever seen. It's just so cool, funny, weird, and sometimes creepy and sad. Fujimoto is a weird genius.</dd>
         <dt>"20th Century Boys" by Naoki Urasawa</dt>
-        <dd>TODO</dd>
+        <dd>A tale of friendship and conspiracy, a group of childhood friends must confront a mysterious cult and their own pasts to save the world. Amazing characters, amazing plot, which just makes you keep asking questions, then answering them while giving you 10 more to think about, and in the end they all get answered amazingly well.</dd>
       </dl>
 
       <h2 class="toggle-heading" onclick="toggleList('animeList', this)" style="cursor:pointer;">
@@ -108,11 +108,13 @@
       </h2>
       <dl id="animeList" style="display:none;">
         <dt>"Apothecary Diaries"</dt>
-        <dd>TODO</dd>
+        <dd>An anime about a young girl with lots of medical knowledge having to navigate the intrigues of the imperial court of a fictional China. One of the best and most lovable main characters of any anime I have ever watched, Maomao is just so funny. All of the characters are well written and the setting is something you don't often see in anime, beautiful animation and voice acting is a big bonus.</dd>
         <dt>"Hunter x Hunter"</dt>
-        <dd>TODO</dd>
+        <dd>The first series to get me into anime. It follows Gon Freecss as he embarks on a journey to become a Hunter and find his father. It has amazing characters, a compelling plot, and a very deep and creative "magic system", Nen.</dd>
         <dt>"Cyberpunk: Edgerunners"</dt>
-        <dd>TODO</dd>
+        <dd>If you want depression watch this. Stunning animation, incredible characters, marvelous story and a very depressive world, based on the Cyberpunk 2077 universe.</dd>
+        <dt>"Honorable Mention: Frieren: Beyond Journey's End"</dt>
+        <dd>Well, basically a perfect adaptation for the manga, I just didn't want to put it in the list with the manga in the manga list, otherwise it would be number 1.</dd>
       </dl>
 
       <h2 class="toggle-heading" onclick="toggleList('movieList', this)" style="cursor:pointer;">
@@ -120,11 +122,11 @@
       </h2>
       <dl id="movieList" style="display:none;">
         <dt>"Princess Mononoke"</dt>
-        <dd>TODO</dd>
+        <dd>A stunning animated film by Studio Ghibli that explores the conflict between nature and industrialization, featuring an amazing protagonist, fantasical plot and beautiful visuals.</dd>
         <dt>"John Wick"</dt>
-        <dd>TODO</dd>
+        <dd>An action film that follows a retired hitman seeking vengeance for the death of his beloved dog. Known for its incredible choreography and action sequences. Basically the perfect action film for me, since it keeps it pretty realistic while still showing some over-the-top action. (And John Wick is just pretty cool)</dd>
         <dt>"The Wonderful Story of Henry Sugar"</dt>
-        <dd>TODO</dd>
+        <dd>A charming adaptation of Roald Dahl's story about a man who discovers a way to see without using his eyes, leading to a journey of self-discovery and adventure. The way the movie is presented is marvelous and I haven't seen it before.</dd>
       </dl>
 
       <h2 class="toggle-heading" onclick="toggleList('seriesList', this)" style="cursor:pointer;">
@@ -132,11 +134,11 @@
       </h2>
       <dl id="seriesList" style="display:none;">
         <dt>"Andor"</dt>
-        <dd>TODO</dd>
+        <dd>I have friends everywhere. The best series I have ever seen. A thrilling Star Wars series following Cassian Andor's journey from petty thief to rebel hero. It features complex characters, political intrigue, and a gritty, realistic tone. It has some of the best speeches in any media I have ever heard and some amazing quotes. It has two of the best episodes of anything, with "one way out" and "who are you?".</dd>
         <dt>"Brooklyn Nine-Nine"</dt>
-        <dd>TODO</dd>
-        <dt>"Avatar: The last Airbender"</dt>
-        <dd>TODO</dd>
+        <dd>A hilarious ensemble comedy set in a New York City police precinct, known for its diverse cast, clever writing, and heartwarming moments. It balances humor with important social issues.</dd>
+        <dt>"Avatar: The Last Airbender"</dt>
+        <dd>A beautifully animated series that follows Aang, the last Airbender, as he tries to bring peace to a world divided by elemental nations. It features rich world-building, complex characters, and themes of friendship and responsibility.</dd>
       </dl>
 
       <h2 class="toggle-heading" onclick="toggleList('musicList', this)" style="cursor:pointer;">
@@ -144,14 +146,12 @@
       </h2>
       <dl id="musicList" style="display:none;">
         <dt>"Ado"</dt>
-        <dd>TODO</dd>
+        <dd>My favorite artist. She is a Japanese singer with powerful vocals and unique style. Every song feels different, so even if you don't like the first one you hear you might like the next one. While I like almost all her songs I would recommend listening to "Usseewa", "Odo", "GiraGira", "Show" and "Elf".</dd>
         <dt>"Poor Mans Poison"</dt>
-        <dd>TODO</dd>
+        <dd>Poor Mans Poison is a musical group known for their harmonious vocals and storytelling through music. My favorite songs are "Feed the Machine", "Give and Take", "Let's Go", "Providence", and "Father's Lament".</dd>
         <dt>"Azari"</dt>
-        <dd>TODO</dd>
+        <dd>Azari is an artist with a very experimental approach to music. Definitely not something for everyone but I would recommend at least giving them a try. My favorites are "Who?", "Be My Guest" and "Wink".</dd>
       </dl>
-
-    
     </div>
   </div>
 
@@ -243,10 +243,10 @@
       <span class="arrow">&#9654;</span> Web tools, Programs and Services:
     </h2>
       <ul id="toolsList" style="display:none;">
-        <li><a href="https://seostudio.tools/" target="_blank">SEOStudio Tools</a> a lot of helpfull tools for texts, youtube videos and web development</li>
+        <li><a href="https://seostudio.tools/" target="_blank">SEOStudio Tools</a> a lot of helpful tools for texts, YouTube videos and web development</li>
         <li><a href="https://www.ifixit.com/" target="_blank">IFixIt</a> loads of guides to repair things yourself</li>
-        <li><a href="https://www.researchgate.net/" target="_blank">Researchgate</a> Free scientific research</li>
-        <li><a href="https://roadmap.sh/" target="_blank">Roadmap</a> A lot of Roadmaps and guides for different programming languages and frameworks</li>
+        <li><a href="https://www.researchgate.net/" target="_blank">ResearchGate</a> Free scientific research</li>
+        <li><a href="https://roadmap.sh/" target="_blank">Roadmap</a> A lot of roadmaps and guides for different programming languages and frameworks</li>
       </ul>
 
     <h2 class="toggle-heading" onclick="toggleList('WebsitesList', this)" style="cursor:pointer;">
@@ -265,15 +265,16 @@
       <span class="arrow">&#9654;</span> Videos:
     </h2>
       <ul id="VideosList" style="display:none;">
-        <li><a href="https://youtu.be/fAQmCNWJHb8?si=2S8RaX4gsGUyqPwc" target="_blank">Very Helpfull Guide</a></li>
+        <li><a href="https://youtu.be/fAQmCNWJHb8?si=2S8RaX4gsGUyqPwc" target="_blank">Very Helpful Guide</a></li>
       </ul>
       
     <h2 class="toggle-heading" onclick="toggleList('ArtistsList', this)" style="cursor:pointer;">
       <span class="arrow">&#9654;</span> Artists:
     </h2>
       <ul id="ArtistsList" style="display:none;">
-        <li><a href="https://www.artstation.com/rinotuna" target="_blank">Rinotuna</a> Takes things/animals designes characters inspired by them (some of my favorites are the ones ispired by toothpaste, the andromeda galaxy and border collies) </li>
-        <li><a href="https://www.instagram.com/raja.nandepu/" target="_blank">Raja Nandepu</a> Concept Artist and illustrator for wizards of the coast. Really like their Art.</li>
+        <li><a href="https://www.artstation.com/rinotuna" target="_blank">Rinotuna</a> Takes things/animals, designs characters inspired by them (some of my favorites are the ones inspired by toothpaste, the Andromeda galaxy and border collies)</li>
+        <li><a href="https://www.instagram.com/raja.nandepu/" target="_blank">Raja Nandepu</a> Concept artist and illustrator for Wizards of the Coast. Really like their art.</li>
+        <li><a href="https://kurattes.tumblr.com/" target="_blank">kurattes</a> Love their art, I might be a bit biased because of Frieren :).</li>
       </ul>
 
 
