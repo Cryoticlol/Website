@@ -10,7 +10,7 @@
 }
 
 
-/* Grundlegendes Body-Styling */
+/* Basic Body-Styling */
 body {
   margin: 0;
   background-color: var(--bg); /* dunkles Grau */
@@ -20,12 +20,11 @@ body {
   overflow: hidden;
 }
 
-/* Für später verwendbare Desktop-Fläche */
 .desktop {
   padding: 20px;
 }
 
-/* Buttons wie Desktop-Icons */
+/* Buttons */
 .icon-button {
   background-color: var(--secondary);
   color: white;
@@ -42,7 +41,7 @@ body {
   background-color: var(--accent);
 }
 
-/* Fenster-Grundlayout */
+/* Window-Basiclayout */
 .window {
   position: absolute;
   top: 120px;
@@ -62,12 +61,12 @@ body {
   margin: 2px;
 }
 
-/* Unsichtbar geschaltetes Fenster */
+
 .window.hidden {
   display: none;
 }
 
-/* Header/Titlebar des Fensters */
+/* Window Header */
 .window-header {
   display: flex;
   justify-content: space-between;
@@ -80,7 +79,7 @@ body {
   color: white;
 }
 
-/* Fensterinhalt */
+/* Window Content */
 .window-content {
   display: flex;
   flex-direction: column;
@@ -91,14 +90,14 @@ body {
   margin: 21px;
 }
 
-/* Der Scrollbare Bereich innerhalb des Fensters */
+/* Making the content area scrollable */
 .content-area {
   flex: 1;
   overflow: auto;
   min-height: 0;
 }
 
-/* Button-Zeile unten im Fenster */
+/* Centered Buttons ordering */
 .center-buttons {
   display: flex;
   flex-direction: row;
@@ -112,7 +111,7 @@ body {
   padding-bottom: 4px;   
 }
 
-/* Schließen-Button (Fenster X) */
+/* Close button (Window X) */
 .window-header button {
   background: transparent;
   border: none;
@@ -125,7 +124,7 @@ body {
 .window-header button:hover {
   color: black;
 }
-
+/* Blackjack Window extra */
 #blackjackWindow {
   position: absolute;
   min-width: 460px;
@@ -133,6 +132,7 @@ body {
   overflow:auto;
 }
 
+/* Blackjack Window Rules */
 #blackjackWindow .rules-btn {
   position: absolute;
   top: 45px;      
@@ -152,7 +152,7 @@ body {
   color: black;
 }
 
-/* Blackjack-Buttonzeile wie .icon-button gestalten */
+/* Blackjack Window Buttons */
 #blackjackWindow .window-content > div:nth-child(2) button {
   background-color: var(--secondary);
   color: white;
@@ -183,6 +183,7 @@ body {
   margin: 2px 0;
 }
 
+/* Window Content Headings and lists distance */
 .window-content h2 + ul,
 .window-content h2 + dl {
   margin-top: 2px;

@@ -1,17 +1,17 @@
-// Fensterverwaltung
+// script.js
 let lastOpenedWindowId = null;
 
 /**
- * Öffnet ein Fenster und positioniert es (zentriert für Sudoku, versetzt für andere)
- * @param {string} id - Die DOM-ID des Fensters
+ * Opens a window and positions it (centered for Sudoku, offset for others)
+ * @param {string} id - The DOM ID of the window
  */
 function openWindow(id) {
   const win = document.getElementById(id);
   win.classList.remove('hidden');
   bringToFront(win);
 
-  // Sudoku-Fenster immer mittig öffnen
-  if (id === "sudokuWindow") {
+  // Always open Sudoku and Guestbook window centered
+  if (id === "sudokuWindow" || id === "guestbookWindow") {
     const rect = win.getBoundingClientRect();
     const winWidth = rect.width || win.offsetWidth;
     const winHeight = rect.height || win.offsetHeight;
@@ -20,7 +20,7 @@ function openWindow(id) {
     win.style.left = `${Math.max(0, (viewportWidth - winWidth) / 2)}px`;
     win.style.top = `${Math.max(0, (viewportHeight - winHeight) / 2)}px`;
   } else if (!win.style.left && !win.style.top) {
-    // Standardverhalten für andere Fenster: versetzt vom zuletzt geöffneten Fenster
+    // Default behavior for other windows: offset from the last opened window
     let refWin = null;
     if (
       lastOpenedWindowId &&
@@ -35,7 +35,7 @@ function openWindow(id) {
       win.style.left = `${lastLeft + 40}px`;
       win.style.top = `${lastTop + 40}px`;
     } else {
-      // Wenn kein Referenzfenster, Fenster zentrieren
+      // If no reference window, center the window
       const rect = win.getBoundingClientRect();
       const winWidth = rect.width || win.offsetWidth;
       const winHeight = rect.height || win.offsetHeight;
@@ -49,16 +49,16 @@ function openWindow(id) {
 }
 
 /**
- * Schließt ein Fenster, indem es ausgeblendet wird
- * @param {string} id - Die DOM-ID des Fensters
+ * Closes a window by hiding it
+ * @param {string} id - The DOM ID of the window
  */
 function closeWindow(id) {
   document.getElementById(id).classList.add('hidden');
 }
 
 /**
- * Bringt ein Fenster in den Vordergrund (höchster z-index)
- * @param {HTMLElement} win - Das Fensterelement
+ * Brings a window to the front (highest z-index)
+ * @param {HTMLElement} win - The window element
  */
 function bringToFront(win) {
   const windows = document.querySelectorAll('.window');
@@ -70,11 +70,11 @@ function bringToFront(win) {
   win.style.zIndex = maxZ + 1;
 }
 
-// Drag & Drop für Fenster
+// Drag & Drop for windows
 let offsetX, offsetY, currentWin;
 
 /**
- * Startet das Ziehen eines Fensters
+ * Starts dragging a window
  * @param {MouseEvent} e
  * @param {HTMLElement} win
  */
@@ -87,7 +87,7 @@ function startDrag(e, win) {
 }
 
 /**
- * Bewegt das aktuelle Fenster mit der Maus
+ * Moves the current window with the mouse
  * @param {MouseEvent} e
  */
 function drag(e) {
@@ -97,7 +97,7 @@ function drag(e) {
 }
 
 /**
- * Beendet das Ziehen des Fensters
+ * Stops dragging the window
  */
 function stopDrag() {
   document.removeEventListener('mousemove', drag);
@@ -105,25 +105,25 @@ function stopDrag() {
   currentWin = null;
 }
 
-// -------------------- Blackjack-Spiel --------------------
+// -------------------- Blackjack Game --------------------
 let deck = [], player = [], dealer = [];
-let gameActive = false; // true, solange das Spiel läuft
+let gameActive = false; // true while the game is running
 
 /**
- * Erstellt und mischt ein neues Kartendeck
+ * Creates and shuffles a new deck of cards
  * @returns {Array} deck
  */
 function newDeck() {
   const suits = ['♠', '♥', '♦', '♣'];
   const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-  // Jede Karte als Objekt, dann Deck mischen
+  // Each card as an object, then shuffle deck
   return suits.flatMap(s => values.map(v => ({ v, s }))).sort(() => Math.random() - 0.5);
 }
 
 /**
- * Berechnet den Wert einer Hand (mit Ass-Regel)
+ * Calculates the value of a hand (with Ace rule)
  * @param {Array} hand
- * @returns {number} totaler Wert
+ * @returns {number} total value
  */
 function getValue(hand) {
   let total = 0, aces = 0;
@@ -132,13 +132,13 @@ function getValue(hand) {
     else if (card.v === 'A') { total += 11; aces++; }
     else total += parseInt(card.v);
   }
-  // Ass kann 1 oder 11 sein
+  // Ace can be 1 or 11
   while (total > 21 && aces > 0) { total -= 10; aces--; }
   return total;
 }
 
 /**
- * Zeigt die aktuellen Karten von Spieler und Dealer an
+ * Displays the current cards of player and dealer
  */
 function displayHands() {
   document.getElementById('playerHand').textContent = player.map(c => c.v + c.s).join(' ');
@@ -146,13 +146,13 @@ function displayHands() {
 }
 
 /**
- * Aktiviert/Deaktiviert die Buttons je nach Spielstatus
+ * Enables/disables buttons depending on game status
  */
 function updateButtons() {
   const startBtn = document.getElementById('dealBtn');
   const hitBtn = document.getElementById('hitBtn');
   const standBtn = document.getElementById('standBtn');
-  // Nur Start ist aktiv, wenn kein Spiel läuft
+  // Only Start is active if no game is running
   if (!gameActive) {
     startBtn.disabled = false;
     hitBtn.disabled = true;
@@ -165,15 +165,15 @@ function updateButtons() {
 }
 
 /**
- * Startet eine neue Runde
+ * Starts a new round
  */
 function deal() {
   deck = newDeck();
   player = [deck.pop(), deck.pop()];
-  dealer = [deck.pop()]; // Dealer startet mit nur einer Karte
+  dealer = [deck.pop()]; // Dealer starts with only one card
   displayHands();
   const val = getValue(player);
-  // Sofortiger Gewinn bei 21
+  // Immediate win at 21
   if (val === 21) {
     document.getElementById('gameStatus').textContent = 'Blackjack! You win! :)';
     gameActive = false;
@@ -186,21 +186,21 @@ function deal() {
 }
 
 /**
- * Spieler zieht eine Karte
+ * Player draws a card
  */
 function hit() {
   if (!gameActive) return;
   player.push(deck.pop());
   displayHands();
   const val = getValue(player);
-  // Sofortiger Gewinn bei 21
+  // Immediate win at 21
   if (val === 21) {
     document.getElementById('gameStatus').textContent = 'Blackjack! You win! :)';
     gameActive = false;
     updateButtons();
     return;
   }
-  // Über 21 = verloren
+  // Over 21 = lose
   if (val > 21) {
     document.getElementById('gameStatus').textContent = 'Over 21, you lose. :(';
     gameActive = false;
@@ -209,7 +209,7 @@ function hit() {
 }
 
 /**
- * Spieler bleibt stehen, Dealer zieht bis mindestens 17
+ * Player stands, dealer draws until at least 17
  */
 function stand() {
   if (!gameActive) return;
@@ -225,9 +225,9 @@ function stand() {
   updateButtons();
 }
 
-// Initialisierung nach Laden des Fensters
+// Initialization after window load
 window.addEventListener('DOMContentLoaded', () => {
-  // Buttons umbenennen und IDs setzen
+  // Rename buttons and set IDs
   const dealBtn = document.querySelector('#blackjackWindow button[onclick="deal()"]');
   if (dealBtn) {
     dealBtn.textContent = 'Start';
@@ -238,11 +238,11 @@ window.addEventListener('DOMContentLoaded', () => {
   const standBtn = document.querySelector('#blackjackWindow button[onclick="stand()"]');
   if (standBtn) standBtn.id = 'standBtn';
 
-  // Reset-Button entfernen, falls vorhanden (falls noch aus altem Code)
+  // Remove reset button if present (from old code)
   const resetBtn = document.querySelector('#blackjackWindow button[onclick="resetGame()"]');
   if (resetBtn) resetBtn.remove();
 
-  // Setzt das Spiel zurück beim Laden
+  // Reset the game on load
   player = [];
   dealer = [];
   document.getElementById('gameStatus').textContent = 'Press "Start" to begin.';
@@ -251,7 +251,7 @@ window.addEventListener('DOMContentLoaded', () => {
   updateButtons();
 });
 
-// --- Sudoku Fenster Initialisierung ---
+// --- Sudoku window initialization ---
 window.addEventListener('DOMContentLoaded', function() {
   var $candidateToggle = $(".js-candidate-toggle"),
       $generateBoardBtnEasy = $(".js-generate-board-btn--easy"),
@@ -264,18 +264,18 @@ window.addEventListener('DOMContentLoaded', function() {
       mySudokuJS = $("#sudoku").sudokuJS({
         difficulty: "very hard",
         candidateShowToggleFn : function(showing){
-          // Synchronisiert den Status der Checkbox mit der Sichtbarkeit der Kandidaten
+          // Synchronize the checkbox status with the visibility of candidates
           $candidateToggle.prop("checked", showing);
         }
       });
 
-  // Löse einen Schritt
+  // Solve one step
   $solveStepBtn.on("click", mySudokuJS.solveStep);
-  // Löse alle
+  // Solve all
   $solveAllBtn.on("click", mySudokuJS.solveAll);
-  // Board löschen
+  // Clear board
   $clearBoardBtn.on("click", mySudokuJS.clearBoard);
-  // Boards mit unterschiedlichem Schwierigkeitsgrad generieren
+  // Generate boards with different difficulty levels
   $generateBoardBtnEasy.on("click", function(){
     mySudokuJS.generateBoard("easy");
   });
@@ -289,7 +289,7 @@ window.addEventListener('DOMContentLoaded', function() {
     mySudokuJS.generateBoard("very hard");
   });
 
-  // Kandidaten anzeigen/ausblenden bei Änderung der Checkbox
+  // Show/hide candidates when checkbox changes
   $candidateToggle.on("change", function(){
     if($candidateToggle.is(":checked"))
       mySudokuJS.showCandidates();
@@ -297,7 +297,7 @@ window.addEventListener('DOMContentLoaded', function() {
       mySudokuJS.hideCandidates();
   });
 
-  // Kandidaten standardmäßig beim Laden ausblenden
+  // Hide candidates by default on load
   $candidateToggle.prop("checked", false);
   mySudokuJS.hideCandidates();
 });
@@ -321,5 +321,3 @@ function toggleList(listId, heading) {
     if (arrow) arrow.style.transform = "rotate(0deg)";
   }
 }
-
-
